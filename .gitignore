@@ -1,0 +1,22 @@
+# Terraform state - contains resource IDs and can contain secrets (e.g. DB password) in plaintext
+terraform/*.tfstate
+terraform/*.tfstate.*
+
+# Local .terraform directories - downloaded provider binaries, not source
+**/.terraform/*
+
+# Plan output files - can contain sensitive values
+terraform/*.tfplan
+terraform/tfplan
+
+# Any *.tfvars files that might contain sensitive data
+terraform/*.tfvars
+!terraform/terraform.tfvars.example
+
+# CLI config files that may contain credentials
+.terraformrc
+terraform.rc
+
+# OS/editor cruft
+.DS_Store
+.vscode/

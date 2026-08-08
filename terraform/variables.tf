@@ -62,7 +62,7 @@ variable "container_image" {
 
 variable "container_port" {
   type    = number
-  default = 8080
+  default = 80
 }
 
 variable "task_cpu" {
@@ -84,7 +84,7 @@ variable "app_desired_count" {
 
 variable "db_instance_class" {
   type    = string
-  default = "db.t3.micro"
+  default = "db.t3.medium"
 }
 
 variable "db_allocated_storage" {
@@ -106,4 +106,9 @@ variable "db_master_password" {
   description = "RDS master password. Pass via TF_VAR_db_master_password env var or a .tfvars file that is NOT committed to git."
   type        = string
   sensitive   = true
+}
+variable "notification_email" {
+  description = "Email address for on-call SNS alerts. Leave empty to skip creating an email subscription."
+  type        = string
+  default     = ""
 }

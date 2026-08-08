@@ -70,3 +70,41 @@ output "rds_security_group_id" {
 output "ecs_security_group_id" {
   value = aws_security_group.ecs.id
 }
+output "ecs_cpu_alarm_name" {
+  value = aws_cloudwatch_metric_alarm.ecs_cpu_high.alarm_name
+}
+
+output "alb_5xx_alarm_name" {
+  value = aws_cloudwatch_metric_alarm.alb_5xx_rate_high.alarm_name
+}
+
+output "app_error_alarm_name" {
+  value = aws_cloudwatch_metric_alarm.app_error_count_high.alarm_name
+}
+
+output "app_error_metric_namespace" {
+  value = aws_cloudwatch_log_metric_filter.app_errors.metric_transformation[0].namespace
+}
+output "sns_alerts_topic_arn" {
+  value = aws_sns_topic.alerts.arn
+}
+
+output "restart_ecs_lambda_name" {
+  value = aws_lambda_function.restart_ecs_task.function_name
+}
+
+output "tag_ec2_lambda_name" {
+  value = aws_lambda_function.tag_ec2_investigate.function_name
+}
+
+output "logs_s3_bucket_name" {
+  value = aws_s3_bucket.logs.bucket
+}
+
+output "firehose_delivery_stream_name" {
+  value = aws_kinesis_firehose_delivery_stream.logs.name
+}
+
+output "dashboard_name" {
+  value = aws_cloudwatch_dashboard.main.dashboard_name
+}

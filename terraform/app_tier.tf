@@ -105,7 +105,7 @@ resource "aws_ecs_task_definition" "app" {
 # ---- ALB routing for the app tier ----
 
 resource "aws_lb_target_group" "app" {
-  name        = "${var.short_name}-app-tg"
+  name_prefix = "oaasa-"
   port        = var.container_port
   protocol    = "HTTP"
   vpc_id      = aws_vpc.main.id
@@ -116,6 +116,10 @@ resource "aws_lb_target_group" "app" {
     interval            = 30
     healthy_threshold   = 2
     unhealthy_threshold = 3
+  }
+
+  lifecycle {
+    create_before_destroy = true
   }
 }
 
